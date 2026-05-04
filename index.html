@@ -840,7 +840,8 @@
           </div>
         </div>
 
-        <form class="quote-form" action="https://formsubmit.co/YOUR-EMAIL@example.com" method="POST">
+        <form class="quote-form" action="https://formsubmit.co/info@bngreporter.co.uk" method="POST">
+          <input type="hidden" name="_next" value="https://bngreporter.co.uk/?success=true">
           <input type="hidden" name="_subject" value="New BNG Reporter quote request">
           <input type="hidden" name="_captcha" value="false">
 
@@ -872,7 +873,8 @@
 
           <label class="full">Project details<textarea name="message" rows="6" placeholder="Tell us about the site, planning stage, deadline and anything else useful." required></textarea></label>
           <button class="btn" type="submit">Send Quote Request →</button>
-          <p class="form-note">Replace <strong>YOUR-EMAIL@example.com</strong> in the form action with your real email address before publishing.</p>
+          <p class="form-note">We’ll review your enquiry and get back to you within 1 working day.</p>
+          <p id="success-message" style="display:none; color: green; font-weight: 700;">Thank you. Your enquiry has been sent successfully.</p>
         </form>
       </div>
     </section>
@@ -886,7 +888,7 @@
             <img src="data:image/webp;base64,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" alt="BNG Reporter logo">
           </a>
           <p>Professional Biodiversity Net Gain reporting services helping you achieve better outcomes for your projects and the environment.</p>
-          <div class="socials"><a href="#">in</a><a href="mailto:info@bngreporter.co.uk">✉</a><a href="tel:01234567890">☎</a></div>
+          <div class="socials"><a href="#">in</a><a href="mailto:info@bngreporter.co.uk">✉</a><a href="tel:07539486519">☎</a></div>
         </div>
         <div>
           <h3>Quick Links</h3>
@@ -899,9 +901,9 @@
         <div>
           <h3>Get in Touch</h3>
           <address>
-            <a href="tel:01234567890">01234 567 890</a><br><br>
-            bngreporter.co.uk<br><br>
-            <a href="mailto:info@bngreporter.co.uk">info@bngreporter.co.uk</a><br><br>
+            <a href="tel:07539486519">Phone: 07539 486519</a><br><br>
+            <a href="https://www.bngreporter.co.uk">Web: www.bngreporter.co.uk</a><br><br>
+            <a href="mailto:info@bngreporter.co.uk">Mail: info@bngreporter.co.uk</a><br><br>
             Covering projects across the UK
           </address>
         </div>
@@ -912,5 +914,11 @@
       </div>
     </div>
   </footer>
+<script>
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('success') === 'true') {
+    document.getElementById('success-message').style.display = 'block';
+  }
+</script>
 </body>
 </html>
