@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>BNG Reporter | Biodiversity Net Gain Reports UK</title>
+  <meta name="description" content="Fast, reliable and compliant Biodiversity Net Gain reports, site assessments and planning support for developers, landowners, homeowners and consultants across the UK.">
+  <meta name="keywords" content="Biodiversity Net Gain report, BNG report, BNG assessment, biodiversity net gain consultant, planning support, UK ecology reports">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://bngreporter.co.uk/">
+
+  <meta property="og:title" content="BNG Reporter | Biodiversity Net Gain Reports UK">
+  <meta property="og:description" content="Professional Biodiversity Net Gain reports and planning support across the UK.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bngreporter.co.uk/">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --dark: #063f32;
+      --darker: #032f26;
+      --green: #5ca83a;
+      --green-light: #7bc044;
+      --cream: #f6faf6;
+      --text: #173b32;
+      --muted: #66736f;
+      --border: #dfe9e2;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, Arial, sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 30px;
+      background: var(--green);
+      color: #fff;
+      border: 2px solid var(--green);
+      font-weight: 800;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .btn:hover {
+      background: var(--dark);
+      border-color: var(--dark);
+      transform: translateY(-1px);
+    }
+
+    .btn.secondary {
+      background: transparent;
+      color: var(--dark);
+      border-color: #9eb2ab;
+    }
+
+    .btn.secondary:hover {
+      background: var(--dark);
+      color: #fff;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.96);
+      border-bottom: 1px solid #eef2ef;
+      backdrop-filter: blur(10px);
+    }
+
+    .nav {
+      min-height: 92px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 26px;
+    }
+
+    .logo img,
+    .logo svg {
+      display: block;
+      width: 128px;
+      height: auto;
+    }
+
+    .site-logo {
+      overflow: visible;
+    }
+
+    nav ul {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      list-style: none;
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: var(--green);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 640px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0 0 0 42%;
+      background:
+        linear-gradient(90deg, #fff 0%, rgba(255,255,255,0.92) 14%, rgba(255,255,255,0.20) 45%, rgba(255,255,255,0) 70%),
+        url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1600&q=85") center / cover;
+      z-index: 0;
+    }
+
+    .hero .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-content {
+      max-width: 610px;
+      padding: 80px 0;
+    }
+
+    .eyebrow {
+      color: var(--green);
+      font-size: 14px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 6vw, 68px);
+      line-height: 1.04;
+      letter-spacing: -2px;
+      color: var(--dark);
+      margin-bottom: 24px;
+    }
+
+    h2 {
+      font-size: clamp(32px, 4vw, 48px);
+      line-height: 1.15;
+      letter-spacing: -1.3px;
+      color: var(--dark);
+      margin-bottom: 14px;
+    }
+
+    h3 {
+      color: var(--dark);
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: 18px;
+      max-width: 540px;
+      margin-bottom: 34px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+
+    .trust-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      max-width: 650px;
+    }
+
+    .trust-item {
+      display: flex;
+      gap: 13px;
+      align-items: flex-start;
+    }
+
+    .icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      color: var(--green);
+      border: 2px solid #b8d9ab;
+      flex: 0 0 auto;
+      font-size: 21px;
+    }
+
+    .trust-item strong {
+      display: block;
+      font-size: 12px;
+      color: var(--dark);
+      margin-bottom: 2px;
+    }
+
+    .trust-item p {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.35;
+    }
+
+    section {
+      padding: 78px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      max-width: 850px;
+      margin: 0 auto 40px;
+    }
+
+    .section-title p:not(.eyebrow) {
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .services {
+      background: linear-gradient(180deg, #f7faf7 0%, #fff 100%);
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 26px;
+    }
+
+    .card {
+      background: #fff;
+      padding: 38px 32px;
+      box-shadow: 0 14px 35px rgba(17, 44, 36, 0.09);
+      border: 1px solid #eef3ef;
+    }
+
+    .card .circle {
+      width: 70px;
+      height: 70px;
+      border-radius: 999px;
+      background: var(--green);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-size: 30px;
+      margin-bottom: 24px;
+    }
+
+    .card h3 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: #5f6c68;
+      min-height: 72px;
+      margin-bottom: 24px;
+    }
+
+    .learn {
+      color: var(--dark);
+      font-weight: 800;
+      font-size: 14px;
+      text-transform: uppercase;
+    }
+
+    .why {
+      color: #fff;
+      background:
+        linear-gradient(90deg, rgba(3,62,48,0.97), rgba(3,77,59,0.94)),
+        url("https://images.unsplash.com/photo-1515150144380-bca9f1650ed9?auto=format&fit=crop&w=1500&q=80") center / cover;
+      text-align: center;
+    }
+
+    .why h2 {
+      color: #fff;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      margin-top: 42px;
+    }
+
+    .feature {
+      padding: 0 34px;
+      border-right: 1px solid rgba(255,255,255,0.25);
+    }
+
+    .feature:last-child {
+      border-right: 0;
+    }
+
+    .feature .icon {
+      width: 76px;
+      height: 76px;
+      border-color: rgba(255,255,255,0.35);
+      color: #fff;
+      margin: 0 auto 20px;
+      font-size: 30px;
+    }
+
+    .feature h3 {
+      color: #fff;
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .feature p {
+      color: #d4e1dc;
+      font-size: 14px;
+    }
+
+    .steps {
+      background: #fff;
+      text-align: center;
+    }
+
+    .step-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 26px;
+      position: relative;
+    }
+
+    .step-grid::before {
+      content: "";
+      position: absolute;
+      left: 15%;
+      right: 15%;
+      top: 45px;
+      border-top: 2px dashed #ccd8d2;
+      z-index: 0;
+    }
+
+    .step {
+      position: relative;
+      z-index: 1;
+      padding: 0 10px;
+    }
+
+    .step .circle {
+      width: 92px;
+      height: 92px;
+      border-radius: 999px;
+      background: #edf3ee;
+      color: var(--dark);
+      display: grid;
+      place-items: center;
+      font-size: 34px;
+      margin: 0 auto 22px;
+    }
+
+    .step h3 {
+      font-size: 15px;
+      margin-bottom: 10px;
+    }
+
+    .step p {
+      color: var(--muted);
+      font-size: 13px;
+      max-width: 210px;
+      margin: 0 auto;
+    }
+
+    .faq-section {
+      background: #fff;
+    }
+
+    .faq-grid {
+      max-width: 930px;
+      margin: 0 auto;
+      display: grid;
+      gap: 16px;
+    }
+
+    .faq-grid details {
+      background: #f7faf7;
+      border: 1px solid #e3ece6;
+      padding: 22px 26px;
+      box-shadow: 0 10px 26px rgba(17, 44, 36, 0.05);
+    }
+
+    .faq-grid summary {
+      cursor: pointer;
+      color: var(--dark);
+      font-weight: 800;
+      font-size: 18px;
+    }
+
+    .faq-grid p {
+      color: var(--muted);
+      margin-top: 12px;
+    }
+
+    .testimonial {
+      padding: 72px 0;
+      color: #fff;
+      text-align: center;
+      background:
+        linear-gradient(rgba(3, 44, 34, 0.72), rgba(3, 44, 34, 0.72)),
+        url("https://images.unsplash.com/photo-1473773508845-188df298d2d1?auto=format&fit=crop&w=1600&q=80") center / cover;
+    }
+
+    .quote-mark {
+      font-size: 70px;
+      line-height: 0.5;
+      color: var(--green-light);
+      font-weight: 800;
+    }
+
+    .testimonial blockquote {
+      max-width: 930px;
+      margin: 0 auto;
+      font-size: clamp(22px, 3vw, 30px);
+      line-height: 1.35;
+      font-weight: 700;
+    }
+
+    .testimonial cite {
+      display: block;
+      color: var(--green-light);
+      font-style: normal;
+      font-weight: 800;
+      margin-top: 24px;
+      text-transform: uppercase;
+    }
+
+    .quote-section {
+      background: var(--cream);
+      padding: 90px 0;
+    }
+
+    .quote-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 54px;
+      align-items: start;
+    }
+
+    .quote-copy p {
+      color: var(--muted);
+      font-size: 17px;
+      margin-bottom: 30px;
+    }
+
+    .quote-points {
+      display: grid;
+      gap: 18px;
+      margin-top: 28px;
+    }
+
+    .quote-points div {
+      background: #fff;
+      border-left: 5px solid var(--green);
+      padding: 18px 20px;
+      box-shadow: 0 10px 30px rgba(17, 44, 36, 0.07);
+    }
+
+    .quote-points strong {
+      display: block;
+      color: var(--dark);
+      margin-bottom: 4px;
+    }
+
+    .quote-points span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .quote-form {
+      background: #fff;
+      padding: 36px;
+      box-shadow: 0 18px 45px rgba(17, 44, 36, 0.11);
+      border: 1px solid #e7eee9;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .quote-form label {
+      display: grid;
+      gap: 7px;
+      color: var(--dark);
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+
+    .quote-form .full {
+      grid-column: 1 / -1;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid #cfdcd5;
+      padding: 14px 15px;
+      font: inherit;
+      color: var(--text);
+      background: #fff;
+      outline: none;
+      transition: 0.2s ease;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--green);
+      box-shadow: 0 0 0 3px rgba(92, 168, 58, 0.13);
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    .quote-form button {
+      grid-column: 1 / -1;
+      width: fit-content;
+    }
+
+    .form-note {
+      grid-column: 1 / -1;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    footer {
+      background: var(--dark);
+      color: #fff;
+      padding: 58px 0 24px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr 1.4fr;
+      gap: 56px;
+      margin-bottom: 42px;
+    }
+
+    .footer-logo {
+      display: inline-block;
+      margin-bottom: 20px;
+      line-height: 0;
+    }
+
+    .footer-logo img,
+    .footer-logo svg {
+      display: block;
+      width: 210px;
+      max-width: 100%;
+      height: auto;
+      background: #fff;
+      padding: 8px;
+      border-radius: 2px;
+    }
+
+    footer p,
+    footer li,
+    footer address {
+      color: #d7e3df;
+      font-size: 15px;
+      font-style: normal;
+      background: transparent;
+    }
+
+    footer h3 {
+      text-transform: uppercase;
+      font-size: 15px;
+      margin-bottom: 20px;
+      letter-spacing: 0.5px;
+      color: #fff;
+    }
+
+    footer ul {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+
+    .socials {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .socials a {
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(255,255,255,0.4);
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      font-size: 14px;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.18);
+      padding-top: 22px;
+      display: flex;
+      justify-content: space-between;
+      color: #d3dfda;
+      font-size: 13px;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .legal {
+      display: flex;
+      gap: 36px;
+    }
+
+    @media (max-width: 940px) {
+      .nav {
+        min-height: 82px;
+      }
+
+      nav ul {
+        display: none;
+      }
+
+      .hero::after {
+        inset: 0;
+        opacity: 0.24;
+      }
+
+      .trust-row,
+      .cards,
+      .feature-grid,
+      .step-grid,
+      .quote-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .feature {
+        border-right: 0;
+        border-bottom: 1px solid rgba(255,255,255,0.2);
+        padding: 26px 20px;
+      }
+
+      .step-grid::before {
+        display: none;
+      }
+
+      .quote-form {
+        grid-template-columns: 1fr;
+      }
+
+      .quote-form button {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .container {
+        width: min(100% - 28px, 1180px);
+      }
+
+      .nav .btn {
+        display: none;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .hero-actions {
+        gap: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="#" class="logo" aria-label="BNG Reporter home">
+        <img src="data:image/webp;base64,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" alt="BNG Reporter logo">
+      </a>
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a class="active" href="#">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#how">How It Works</a></li>
+          <li><a href="#faqs">FAQs</a></li>
+          <li><a href="#quote">Contact</a></li>
+        </ul>
+      </nav>
+      <a href="#quote" class="btn">Get a Quote</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <p class="eyebrow">Biodiversity Net Gain Reports</p>
+          <h1>Professional reports. Better outcomes.</h1>
+          <p class="lead">Fast, reliable and compliant Biodiversity Net Gain reports for developers, landowners and consultants.</p>
+          <div class="hero-actions">
+            <a class="btn" href="#quote">Get a Quote →</a>
+            <a class="btn secondary" href="#services">Our Services</a>
+          </div>
+          <div class="trust-row">
+            <div class="trust-item"><div class="icon">✓</div><div><strong>Fully Compliant</strong><p>With the latest BNG requirements</p></div></div>
+            <div class="trust-item"><div class="icon">◷</div><div><strong>Fast Turnaround</strong><p>Reports delivered on time, every time</p></div></div>
+            <div class="trust-item"><div class="icon">⌁</div><div><strong>Trusted Expertise</strong><p>Ecological knowledge you can rely on</p></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="services" id="services">
+      <div class="container">
+        <div class="section-title">
+          <p class="eyebrow">— Our Services</p>
+          <h2>Solutions for Every Project</h2>
+          <p>From initial assessments to full reporting, we provide clear, accurate and defensible BNG solutions.</p>
+        </div>
+        <div class="cards">
+          <article class="card"><div class="circle">▤</div><h3>BNG Reports</h3><p>Accurate and compliant Biodiversity Net Gain reports tailored to your site.</p><a class="learn" href="#quote">Request Quote →</a></article>
+          <article class="card"><div class="circle">⌁</div><h3>Site Assessments</h3><p>Detailed ecological surveys and assessments to support your project.</p><a class="learn" href="#quote">Request Quote →</a></article>
+          <article class="card"><div class="circle">◎</div><h3>Planning Support</h3><p>Expert support and advice to help you through the planning process.</p><a class="learn" href="#quote">Request Quote →</a></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="why" id="about">
+      <div class="container">
+        <p class="eyebrow">— Why Choose BNG Reporter?</p>
+        <h2>Reliable. Professional. Efficient.</h2>
+        <div class="feature-grid">
+          <div class="feature"><div class="icon">✓</div><h3>Experienced</h3><p>Specialist ecological knowledge and years of industry experience.</p></div>
+          <div class="feature"><div class="icon">◎</div><h3>Accurate</h3><p>Clear, detailed reporting you can trust.</p></div>
+          <div class="feature"><div class="icon">◷</div><h3>Efficient</h3><p>Fast turnaround times to keep your project moving.</p></div>
+          <div class="feature"><div class="icon">⌁</div><h3>Sustainable</h3><p>Committed to biodiversity and better outcomes.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="steps" id="how">
+      <div class="container">
+        <div class="section-title">
+          <p class="eyebrow">— How It Works</p>
+          <h2>Simple Steps, Clear Results</h2>
+        </div>
+        <div class="step-grid">
+          <div class="step"><div class="circle">1</div><h3>Get in Touch</h3><p>Contact us with your project details and requirements.</p></div>
+          <div class="step"><div class="circle">2</div><h3>We Assess</h3><p>We assess your site and gather the necessary data.</p></div>
+          <div class="step"><div class="circle">3</div><h3>We Report</h3><p>We prepare your compliant BNG report, fast.</p></div>
+          <div class="step"><div class="circle">4</div><h3>You Move Forward</h3><p>Submit with confidence and keep your project on track.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq-section" id="faqs">
+      <div class="container">
+        <div class="section-title">
+          <p class="eyebrow">— FAQs</p>
+          <h2>Biodiversity Net Gain FAQs</h2>
+          <p>Common questions about BNG reports, planning requirements and getting started.</p>
+        </div>
+        <div class="faq-grid">
+          <details open><summary>What is a Biodiversity Net Gain report?</summary><p>A BNG report explains the existing biodiversity value of a site, the likely impact of development and how the project can deliver the required biodiversity improvement.</p></details>
+          <details><summary>Do I need a BNG report for planning permission?</summary><p>Many planning applications now need to show how Biodiversity Net Gain will be achieved. The exact requirement depends on the project type, site and local planning authority.</p></details>
+          <details><summary>How quickly can you prepare a report?</summary><p>Turnaround depends on the site and information available, but we aim to provide clear timescales at the quote stage and keep your project moving efficiently.</p></details>
+          <details><summary>What information do you need from me?</summary><p>Helpful information includes the site address, red line boundary, planning drawings, existing surveys, photographs and any deadlines set by your planning consultant or local authority.</p></details>
+          <details><summary>Do you cover projects across the UK?</summary><p>Yes, BNG Reporter supports homeowners, landowners, developers and consultants with Biodiversity Net Gain reporting and planning support across the UK.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonial">
+      <div class="container">
+        <div class="quote-mark">“</div>
+        <blockquote>BNG Reporter provided a fast, professional and accurate service. Their reports are detailed, easy to understand and always delivered on time.</blockquote>
+        <cite>— Planning Consultant</cite>
+      </div>
+    </section>
+
+    <section class="quote-section" id="quote">
+      <div class="container quote-grid">
+        <div class="quote-copy">
+          <p class="eyebrow">— Get a Quote</p>
+          <h2>Tell us about your project</h2>
+          <p>Send over the key details and we’ll come back to you with a clear quote for your Biodiversity Net Gain report or site assessment.</p>
+          <div class="quote-points">
+            <div><strong>Fast response</strong><span>We aim to respond within 1 working day.</span></div>
+            <div><strong>Clear pricing</strong><span>No vague estimates or unnecessary extras.</span></div>
+            <div><strong>UK wide support</strong><span>Suitable for homeowners, developers, consultants and landowners.</span></div>
+          </div>
+        </div>
+
+        <form class="quote-form" action="https://formsubmit.co/YOUR-EMAIL@example.com" method="POST">
+          <input type="hidden" name="_subject" value="New BNG Reporter quote request">
+          <input type="hidden" name="_captcha" value="false">
+
+          <label>Name<input type="text" name="name" placeholder="Your full name" required></label>
+          <label>Email<input type="email" name="email" placeholder="you@example.com" required></label>
+          <label>Phone number<input type="tel" name="phone" placeholder="Optional"></label>
+          <label>Project location<input type="text" name="location" placeholder="Town, county or postcode" required></label>
+
+          <label>Project type
+            <select name="project_type" required>
+              <option value="">Select one</option>
+              <option>Householder planning application</option>
+              <option>New build development</option>
+              <option>Land promotion</option>
+              <option>Commercial project</option>
+              <option>Other</option>
+            </select>
+          </label>
+
+          <label>What do you need?
+            <select name="service" required>
+              <option value="">Select one</option>
+              <option>BNG Report</option>
+              <option>Site Assessment</option>
+              <option>Planning Support</option>
+              <option>Not sure yet</option>
+            </select>
+          </label>
+
+          <label class="full">Project details<textarea name="message" rows="6" placeholder="Tell us about the site, planning stage, deadline and anything else useful." required></textarea></label>
+          <button class="btn" type="submit">Send Quote Request →</button>
+          <p class="form-note">Replace <strong>YOUR-EMAIL@example.com</strong> in the form action with your real email address before publishing.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="#" class="footer-logo" aria-label="BNG Reporter home">
+            <img src="data:image/webp;base64,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" alt="BNG Reporter logo">
+          </a>
+          <p>Professional Biodiversity Net Gain reporting services helping you achieve better outcomes for your projects and the environment.</p>
+          <div class="socials"><a href="#">in</a><a href="mailto:info@bngreporter.co.uk">✉</a><a href="tel:01234567890">☎</a></div>
+        </div>
+        <div>
+          <h3>Quick Links</h3>
+          <ul><li><a href="#">Home</a></li><li><a href="#services">Services</a></li><li><a href="#about">About</a></li><li><a href="#how">How It Works</a></li><li><a href="#faqs">FAQs</a></li><li><a href="#quote">Contact</a></li></ul>
+        </div>
+        <div>
+          <h3>Services</h3>
+          <ul><li>BNG Reports</li><li>Site Assessments</li><li>Planning Support</li></ul>
+        </div>
+        <div>
+          <h3>Get in Touch</h3>
+          <address>
+            <a href="tel:01234567890">01234 567 890</a><br><br>
+            bngreporter.co.uk<br><br>
+            <a href="mailto:info@bngreporter.co.uk">info@bngreporter.co.uk</a><br><br>
+            Covering projects across the UK
+          </address>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 BNG Reporter. All rights reserved.</p>
+        <div class="legal"><a href="#">Privacy Policy</a><a href="#">Terms & Conditions</a></div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
